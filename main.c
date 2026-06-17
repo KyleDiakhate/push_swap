@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: micampos <micampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 13:29:45 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/17 13:42:18 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/17 13:51:48 by micampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
  
 int main (void)
 {
-	printf("Olaaa");
-	printf("oKKKKK");
+	printf("miguel");
+	printf("cobweb");
 }
