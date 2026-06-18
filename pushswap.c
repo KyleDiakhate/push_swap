@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: micampos <micampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 15:19:35 by micampos          #+#    #+#             */
-/*   Updated: 2026/06/18 16:16:44 by micampos         ###   ########.fr       */
+/*   Updated: 2026/06/18 19:00:28 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct node
-{
-	int data;
-	struct node *next;
-} t_list;
+#include "push_swap.h"
 
 t_list	*lstnew(int n)
 {
@@ -67,90 +62,7 @@ t_list	*makelst(char **str)
 	return (lst);
 }
 
-void	push_a(t_list **top_a, t_list **top_b)
-{
-	t_list	*temp;
 
-	lstaddfront(top_a, (*top_b) -> data);
-	temp = *top_b;
-	*top_b = (*top_b) -> next;
-	free(temp);
-	printf("pa\n");
-}
-
-void	push_b(t_list **top_a, t_list **top_b)
-{
-	t_list	*temp;
-
-	lstaddfront(top_b, (*top_a) -> data);
-	temp = *top_a;
-	*top_a = (*top_a) -> next;
-	free(temp);
-	printf("pb\n");
-}
-
-void	swap_a(t_list *top_a)
-{
-	t_list	*next_node;
-	int		t;
-
-	if (top_a -> next != NULL)
-	{
-		next_node = top_a -> next;
-		t = next_node -> data;
-		next_node -> data = top_a -> data;
-		top_a -> data = t;
-	}
-	printf("sa\n");
-}
-
-void	swap_b(t_list *top_b)
-{
-	t_list	*next_node;
-	int		t;
-
-	if (top_b -> next != NULL)
-	{
-		next_node = top_b -> next;
-		t = next_node -> data;
-		next_node -> data = top_b -> data;
-		top_b -> data = t;
-	}
-	printf("sb\n");
-}
-
-void	rotate_a(t_list **top_a)
-{
-	t_list	*temp;
-	int		t;
-
-	if ((*top_a) -> next != NULL)
-	{
-		t = (*top_a) -> data;
-		temp = *top_a;
-		*top_a = (*top_a) -> next;
-		free(temp);
-		lstaddback(top_a, t);
-	}
-	printf("ra\n");
-}
-
-void	rotate_b(t_list **top_b)
-{
-	t_list	*temp;
-	int		t;
-	
-	
-	if ((*top_b) -> next != NULL)
-	{
-		t = (*top_b) -> data;
-		temp = *top_b;
-		*top_b = (*top_b) -> next;
-		free(temp);
-		lstaddback(top_b, t);
-	}
-	printf("rb\n");
-}
 
 float	disorder(t_list *top_a)
 {
@@ -177,13 +89,13 @@ void	print_stacks(t_list *top_a, t_list *top_b)
 {
 	while (top_a != NULL)
 	{
-		printf("%d\n", top_a -> data);
+		ft_printf("%d\n", top_a -> data);
 		top_a = top_a -> next;
 	}
-	printf("\n\n");
+	ft_printf("\n\n");
 	while (top_b != NULL)
 	{
-		printf("%d\n", top_b -> data);
+		ft_printf("%d\n", top_b -> data);
 		top_b = top_b -> next;
 	}
 }
@@ -243,7 +155,7 @@ void	algo(t_list *top_a, t_list *top_b)
 	count = 0;
 	if (disorder(top_a) == 0)
 	{
-		printf("Sorted!\n");
+		ft_printf("Sorted!\n");
 		return ;
 	}
 	while (disorder(top_a) != 0)
@@ -254,24 +166,8 @@ void	algo(t_list *top_a, t_list *top_b)
 	push_a(&top_a, &top_b);
 	count++;
 	print_stacks(top_a, top_b);
-	printf("count: %d\n", count);
+	ft_printf("count: %d\n", count);
 }
 
-int	main(int argc, char **argv)
-{
-	t_list	*top_a;
-	t_list	*top_b;
-	float	ratio;
 
-	top_b = NULL;
-	if (argc < 2)
-		return (printf("You failed!"), 0);
-	top_a = makelst(argv);
-	ratio = disorder(top_a);
-	printf("ratio: %f\n\n", ratio);
-	algo(top_a, top_b);
-	algo(top_a, top_b);
-	printf("ratio: %f\n\n", ratio);
-	return (0);
-}
 

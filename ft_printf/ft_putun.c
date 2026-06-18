@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putun.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: micampos <micampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/17 13:29:45 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/17 13:51:48 by micampos         ###   ########.fr       */
+/*   Created: 2026/05/25 17:02:14 by ltomas-d          #+#    #+#             */
+/*   Updated: 2026/06/18 18:31:10 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
- 
-int main (void)
+
+#include "../push_swap.h"
+int	ft_putun(unsigned int n)
 {
-	printf("miguel");
-	printf("cobweb");
+	int	cont;
+
+	cont = 0;
+	if (n < 10)
+	{
+		cont += ft_putchar(n + '0');
+	}
+	else
+	{
+		cont += ft_putun(n / 10);
+		cont += ft_putun(n % 10);
+	}
+	return (cont);
 }
