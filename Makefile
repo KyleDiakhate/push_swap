@@ -6,8 +6,12 @@ RM = rm -f
 SRCS_DIR = srcs
 OPERATIONS_DIR = operations
 PRINTF_DIR = ft_printf
+ALGO_DIR = algorithms
 
-SRCS_FILES = $(SRCS_DIR)/main.c
+
+SRCS_FILES = $(SRCS_DIR)/main.c \
+		     $(SRCS_DIR)/list.c \
+			 $(SRCS_DIR)/utils.c		
 
 OPERATIONS_FILES = $(OPERATIONS_DIR)/push.c \
 				   $(OPERATIONS_DIR)/rotate.c \
@@ -20,9 +24,10 @@ PRINTF_FILES =  $(PRINTF_DIR)/ft_printf.c \
 				$(PRINTF_DIR)/ft_putptr.c \
 				$(PRINTF_DIR)/ft_putstr.c \
 				$(PRINTF_DIR)/ft_putun.c 
-PUSH_SWAP_FILE = pushswap.c
+ALGO_FILE = $(ALGO_DIR)/disorder.c \
+			$(ALGO_DIR)/simple.c 
 
-SRCS = $(SRCS_FILES) $(OPERATIONS_FILES) $(PRINTF_FILES) $(PUSH_SWAP_FILE)
+SRCS = $(SRCS_FILES) $(OPERATIONS_FILES) $(PRINTF_FILES) $(ALGO_FILE)
 
 OBJS = $(SRCS:.c=.o)
 
