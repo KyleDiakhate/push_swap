@@ -6,56 +6,63 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:34:01 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/19 15:35:05 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/21 17:09:15 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list	*lstnew(int n)
+t_node	*lstnew(int n)
 {
-	t_list *node;
+	t_node *node;
 
-	node = malloc(sizeof(t_list));
+	node = malloc(sizeof(t_node));
+	if(!node)
+		return (NULL);
 	node -> data = n;
-	node -> next = NULL;
+	node -> next = node;
+	node -> prev = node;
+	node -> index = 0;
 	return (node);
 }
 
-void	lstaddfront(t_list **lst, int n)
+void	lstaddfront(t_node **lst, int n)
 {
-	t_list *temp;
+	t_node *temp;
+	t_node *last;
+	
 	temp = lstnew(n);
+	if (!temp)
+    	return ;
+	if(*lst == NULL)
+	{
+		*lst = temp;
+		return;
+	}
+	last = (*lst) -> prev;
 	temp -> next = *lst;
+	temp -> prev = last;
+    (*lst) -> prev = temp;
+	last -> next = temp; 
 	*lst = temp;
 }
 
-void	lstaddback(t_list **lst, int n)
+t_stack	*makelst(int argc, char **argv)
 {
-	t_list *temp;
-	
-	temp = *lst;
-	if (*lst == NULL)
-	{
-		*lst = lstnew(n);
-		return ;
-	}
-	while ((temp) -> next != NULL)
-		temp = (temp) -> next;
-	(temp) -> next = lstnew(n);
-}
-
-t_list	*makelst(char **str)
-{
+	t_stack *stack;
 	int		i;
-	t_list	*lst;
 
-	lst = NULL;
-	i = 1;
-	while (str[i] != NULL)
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
+    	return (NULL);
+	stack -> head = NULL;
+	stack -> size = 0;
+	i = argc - 1;
+	while (i >= 1)
 	{
-		lstaddback(&lst, atoi(str[i]));
-		i++;
+		lstaddfront(&stack->head, atoi(argv[i]));
+		stack -> size++;
+		i--;
 	}
-	return (lst);
+	return (stack);
 }

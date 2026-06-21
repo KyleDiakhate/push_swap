@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/18 18:46:37 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/21 18:31:47 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,21 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h> 
-
-typedef struct node
+/* Estrutura dos alterados inves de usar single linked list mudei para circular.*/
+typedef struct s_node
 {
-	int data;
-	struct node *next;
-} t_list;
+	int	data;
+	int	index; /* usado para normalizar valores nos algoritmos */
+	struct s_node *next;
+	struct s_node *prev;
+} t_node;
+
+/*Estrura das stacks. */ 
+typedef struct s_stack
+{
+	t_node *head; /* <- Aponta para o inicio da stack*/
+	int	size; // <- tamanho das stacks.
+} t_stack;
 
 int	ft_printf(const char *str, ...);
 int	ft_putchar(char c);
@@ -31,21 +40,30 @@ int	ft_putptr(unsigned long n);
 int	ft_putstr(char *s);
 int	ft_putun(unsigned int n);
 
-void	swap_a(t_list *top_a);
-void	swap_b(t_list *top_b);
-void	rotate_a(t_list **top_a);
-void	rotate_b(t_list **top_b);
-void	push_a(t_list **top_a, t_list **top_b);
-void	push_b(t_list **top_a, t_list **top_b);
+void	swap_a(t_stack* a);
+void	swap_b(t_stack *b);
+void    do_swap(t_stack *s);
+void    swap_ss(t_stack *a, t_stack *b);
 
-t_list	*lstnew(int n);
-void	lstaddfront(t_list **lst, int n);
-void	lstaddback(t_list **lst, int n);
-t_list	*makelst(char **str);
+void	rotate_a(t_stack *a);
+void	rotate_b(t_stack *b);
+void	rotate(t_stack *s);
+void	rotate_rr(t_stack *a, t_stack *b);
+void	do_push(t_stack *src, t_stack *dst);
+void	push_a(t_stack *a, t_stack *b);
+void	push_b(t_stack *a, t_stack *b);
+void	reverse_rotate(t_stack *s);
+void    reverse_rotate_a(t_stack *a);
+void    reverse_rotate_b(t_stack *b);
+void	reverse_rotate_rrr(t_stack *a, t_stack *b);
 
-float	disorder(t_list *top_a);
-void	print_stacks(t_list *top_a, t_list *top_b);
-int	reverse_simple(t_list **top_a, t_list **top_b);
-int	simple(t_list **top_a, t_list **top_b);
-void	algo(t_list *top_a, t_list *top_b);
+t_node	*lstnew(int n);
+void	lstaddfront(t_node **lst, int n);
+t_stack	*makelst(int argc, char **argv);
+
+float	disorder(t_stack *a);
+void	print_stacks(t_stack *a, t_stack *b);
+int	reverse_simple(t_stack *a, t_stack *top_b);
+int	simple(t_stack *top_a, t_stack *top_b);
+void	algo(t_stack *top_a, t_stack *top_b);
 #endif

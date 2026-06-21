@@ -6,41 +6,34 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 18:36:54 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/18 19:08:50 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/21 17:54:47 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rotate_a(t_list **top_a)
+void rotate(t_stack *s)
 {
-	t_list	*temp;
-	int		t;
+	if(s->size < 2)
+		return;
+	s->head = s->head->next;
+}
+void	rotate_a(t_stack *a)
+{
 
-	if ((*top_a) -> next != NULL)
-	{
-		t = (*top_a) -> data;
-		temp = *top_a;
-		*top_a = (*top_a) -> next;
-		free(temp);
-		lstaddback(top_a, t);
-	}
+	rotate(a);
 	ft_printf("ra\n");
 }
 
-void	rotate_b(t_list **top_b)
+void	rotate_b(t_stack *b)
 {
-	t_list	*temp;
-	int		t;
-	
-	
-	if ((*top_b) -> next != NULL)
-	{
-		t = (*top_b) -> data;
-		temp = *top_b;
-		*top_b = (*top_b) -> next;
-		free(temp);
-		lstaddback(top_b, t);
-	}
+	rotate(b);
 	ft_printf("rb\n");
+}
+
+void	rotate_rr(t_stack *a, t_stack *b)
+{
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
 }

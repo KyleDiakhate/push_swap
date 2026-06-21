@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/18 18:40:10 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/21 17:28:20 by ltomas-d         ###   ########.fr       */
+/*   Created: 2026/06/21 17:56:37 by ltomas-d          #+#    #+#             */
+/*   Updated: 2026/06/21 18:01:20 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void    do_swap(t_stack *s)
+void reverse_rotate(t_stack *s)
 {
-    int t;
+	if(s->size < 2)
+		return;
+	s->head = s->head->prev;
+}
+void	reverse_rotate_a(t_stack *a)
+{
 
-    if (s->size < 2)
-        return ;
-    t = s->head->data;
-    s->head->data = s->head->next->data;
-    s->head->next->data = t;
+	reverse_rotate(a);
+	ft_printf("rra\n");
 }
 
-void    swap_a(t_stack *a)
+void	reverse_rotate_b(t_stack *b)
 {
-    do_swap(a);
-    ft_printf("sa\n");
+	reverse_rotate(b);
+	ft_printf("rrb\n");
 }
 
-void    swap_b(t_stack *b)
+void	reverse_rotate_rrr(t_stack *a, t_stack *b)
 {
-    do_swap(b);
-    ft_printf("sb\n");
-}
-
-void    swap_ss(t_stack *a, t_stack *b)
-{
-    do_swap(a);
-    do_swap(b);
-    ft_printf("ss\n");
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_printf("rrr\n");
 }
