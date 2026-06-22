@@ -6,7 +6,7 @@
 /*   By: micampos <micampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 15:19:35 by micampos          #+#    #+#             */
-/*   Updated: 2026/06/18 16:16:44 by micampos         ###   ########.fr       */
+/*   Updated: 2026/06/22 15:57:37 by micampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,6 +257,48 @@ void	algo(t_list *top_a, t_list *top_b)
 	printf("count: %d\n", count);
 }
 
+void	radix(t_list **top_a, t_list **top_b)
+{
+	int	t;
+	int i;
+	int	j;
+	int p;
+	int k;
+	t_list *temp;
+
+	t = 0;
+	j = 0;
+	k = 0;
+	temp = *top_a;
+	while ((*top_a) != NULL)
+	{
+		if ((*top_a) -> data < 0)
+			(*top_a) -> data = (*top_a) -> data * -1;
+		if ((*top_a) -> data > t)
+			t = (*top_a) -> data;
+		*top_a = (*top_a) -> next;
+		k++;
+	}
+	i = 0;
+	while (t > 0)
+	{
+		t = t / 10;
+		i++;
+	}
+	printf("max digit: %d\n", i);
+	j = 0;
+	p = 10;
+	while (j < k)
+	{
+		if (temp -> data % p == j)
+			push_b(&temp, top_b);
+		else
+			rotate_a(&temp);
+		j++;
+	}
+	print_stacks(*top_a, *top_b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*top_a;
@@ -269,8 +311,8 @@ int	main(int argc, char **argv)
 	top_a = makelst(argv);
 	ratio = disorder(top_a);
 	printf("ratio: %f\n\n", ratio);
-	algo(top_a, top_b);
-	algo(top_a, top_b);
+	// algo(top_a, top_b);
+	radix(&top_a, &top_b);
 	printf("ratio: %f\n\n", ratio);
 	return (0);
 }
