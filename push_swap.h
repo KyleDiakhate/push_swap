@@ -6,13 +6,14 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/21 18:31:47 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/23 17:58:24 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP
 #define PUSH_SWAP
 
+#include <limits.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h> 
@@ -63,7 +64,9 @@ t_stack	*makelst(int argc, char **argv);
 
 float	disorder(t_stack *a);
 void	print_stacks(t_stack *a, t_stack *b);
+void    print_one_stack(t_stack *s);
 int	reverse_simple(t_stack *a, t_stack *top_b);
 int	simple(t_stack *top_a, t_stack *top_b);
 void	algo(t_stack *top_a, t_stack *top_b);
+char	**ft_split(char const *s, char c);
 #endif

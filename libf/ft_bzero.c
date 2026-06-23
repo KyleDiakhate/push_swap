@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/17 13:29:45 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/23 17:07:46 by ltomas-d         ###   ########.fr       */
+/*   Created: 2026/04/20 17:12:45 by ltomas-d          #+#    #+#             */
+/*   Updated: 2026/06/23 17:50:07 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_bzero(void *s, size_t n)
 {
-	t_stack	*a;
-	t_stack	*b;
-	float	ratio;
+	unsigned char	*ptr;
+	size_t			i;
 
-	b = NULL;
-	if (argc < 2)
-		return (ft_printf("You failed!"), 0);
-	a = makelst(argv);
-	ratio = disorder(top_a);
-	ft_printf("ratio: %f\n\n", ratio);
-	algo(top_a, top_b);
-	algo(top_a, top_b);
-	ft_printf("ratio: %f\n\n", ratio);
-	return (0);
+	i = 0;
+	ptr = (unsigned char *) s;
+	while (i < n)
+	{
+		ptr[i] = 0;
+		i++;
+	}
 }

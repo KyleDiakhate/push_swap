@@ -6,23 +6,31 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:39:17 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/19 15:39:51 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/23 14:28:28 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	print_stacks(t_list *top_a, t_list *top_b)
+
+void	print_one_stack(t_stack *s)
 {
-	while (top_a != NULL)
+	t_node *current;
+	if (s->head == NULL)
+        return ;
+	current = s->head;
+	ft_printf("%d\n", current->data);
+	current = current->next;
+	while(current != s->head)
 	{
-		ft_printf("%d\n", top_a -> data);
-		top_a = top_a -> next;
+		ft_printf("%d\n", current->data);
+		current = current->next;
 	}
+	
+}
+void	print_stacks(t_stack *a, t_stack *b)
+{
+	print_one_stack(a);
 	ft_printf("\n\n");
-	while (top_b != NULL)
-	{
-		ft_printf("%d\n", top_b -> data);
-		top_b = top_b -> next;
-	}
+	print_one_stack(b);
 }
