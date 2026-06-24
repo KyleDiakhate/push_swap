@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 18:36:54 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/21 17:54:47 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/24 15:28:14 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void rotate(t_stack *s)
 }
 void	rotate_a(t_stack *a)
 {
-
 	rotate(a);
 	ft_printf("ra\n");
 }

@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 19:36:12 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/23 17:53:26 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/24 15:20:28 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ptr = malloc((len + 1) * sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
-	ft_copy(ptr, s + start, len);
+	ft_strcpy(ptr, s + start, len);
 	return (ptr);
 }

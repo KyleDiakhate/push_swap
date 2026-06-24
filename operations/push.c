@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 18:38:36 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/21 18:33:15 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/24 15:28:23 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	do_push(t_stack *src, t_stack *dst)
 	if(src->size == 0)
 		return;
 	node = src->head;
-
 	/*Caso que tenha so 1 elemento na stack*/
 	 if (src->size == 1)
     {
