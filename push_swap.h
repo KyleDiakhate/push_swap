@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/25 10:55:36 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/25 15:29:18 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,8 @@ void	algo(t_stack *top_a, t_stack *top_b);
 void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	is_duplicate(t_stack *s, int value);
+long	convert_num(const char *nptr);
+long	verify_num(const char *nptr, long num);
+void print_erro();
 #endif
