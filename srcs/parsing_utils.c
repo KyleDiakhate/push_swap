@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 10:55:57 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/25 12:55:09 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/25 14:19:18 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ int	ft_atoi(const char *nptr)
 	}
 	if(nptr[i] == '\0')
 		print_erro();
-	num = verify_num(nptr, num);
+	num = verify_num(&nptr[i], num);
 	if ((neg == 1 && num > INT_MAX) || (neg == -1 && num > -(long)INT_MIN))
 		print_erro();
 	return (num * neg);
 }
+
+void	is_duplicte(t_stac)
