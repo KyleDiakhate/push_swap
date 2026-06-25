@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/23 17:58:24 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/25 10:55:36 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_stack
 	t_node *head; /* <- Aponta para o inicio da stack*/
 	int	size; // <- tamanho das stacks.
 } t_stack;
-
+/*Funcoes do ft_printf*/
 int	ft_printf(const char *str, ...);
 int	ft_putchar(char c);
 int	ft_puthex(unsigned int n, char type);
@@ -41,11 +41,11 @@ int	ft_putptr(unsigned long n);
 int	ft_putstr(char *s);
 int	ft_putun(unsigned int n);
 
+/*Funcoes para operacoes*/
 void	swap_a(t_stack* a);
 void	swap_b(t_stack *b);
 void    do_swap(t_stack *s);
 void    swap_ss(t_stack *a, t_stack *b);
-
 void	rotate_a(t_stack *a);
 void	rotate_b(t_stack *b);
 void	rotate(t_stack *s);
@@ -57,7 +57,6 @@ void	reverse_rotate(t_stack *s);
 void    reverse_rotate_a(t_stack *a);
 void    reverse_rotate_b(t_stack *b);
 void	reverse_rotate_rrr(t_stack *a, t_stack *b);
-
 t_node	*lstnew(int n);
 void	lstaddfront(t_node **lst, int n);
 t_stack	*makelst(int argc, char **argv);
@@ -68,5 +67,9 @@ void    print_one_stack(t_stack *s);
 int	reverse_simple(t_stack *a, t_stack *top_b);
 int	simple(t_stack *top_a, t_stack *top_b);
 void	algo(t_stack *top_a, t_stack *top_b);
+
+
+void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 #endif
