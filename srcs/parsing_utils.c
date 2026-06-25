@@ -6,7 +6,11 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 10:55:57 by ltomas-d          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/06/25 14:19:18 by ltomas-d         ###   ########.fr       */
+=======
+/*   Updated: 2026/06/25 15:21:44 by ltomas-d         ###   ########.fr       */
+>>>>>>> kyle
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +22,12 @@ void print_erro()
 	exit(1);
 }
 
-int	verify_num(const char *nptr, int num)
+long	verify_num(const char *nptr, long num)
 {
 	int i;
 
 	i = 0;
-	while (&nptr[i])
+	while (nptr[i])
 	{
 		if(nptr[i] < '0' || nptr[i] > '9')
 		{
@@ -34,7 +38,7 @@ int	verify_num(const char *nptr, int num)
 	}
 	return (num);
 }
-int	ft_atoi(const char *nptr)
+long	convert_num(const char *nptr)
 {
 	int	i;
 	long	neg;
@@ -61,4 +65,20 @@ int	ft_atoi(const char *nptr)
 	return (num * neg);
 }
 
-void	is_duplicte(t_stac)
+void	is_duplicate(t_stack *s, int value)
+{
+	t_node *current;
+
+	current = s->head;
+	if(current == NULL)
+		return;
+	if(current->data == value)
+		print_erro();
+	current = s->head->next;
+	while (current != s->head)
+	{
+		if(current->data == value)
+			print_erro();
+		current = current->next;
+	}
+}
