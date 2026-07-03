@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/25 15:29:18 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/03 17:10:47 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h> 
+
+typedef struct s_config
+{
+    int    strategy;
+    int    bench;
+    int    start;
+} t_config;
 /* Estrutura dos alterados inves de usar single linked list mudei para circular.*/
 typedef struct s_node
 {
@@ -67,7 +74,8 @@ void    print_one_stack(t_stack *s);
 int	reverse_simple(t_stack *a, t_stack *top_b);
 int	simple(t_stack *top_a, t_stack *top_b);
 void	algo(t_stack *top_a, t_stack *top_b);
-
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t	ft_strlen(const char *s);
 
 void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);

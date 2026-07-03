@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 10:55:57 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/25 15:21:44 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/03 15:16:11 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ long	convert_num(const char *nptr)
 	if(nptr[i] == '\0')
 		print_erro();
 	num = verify_num(&nptr[i], num);
-	if ((neg == 1 && num > INT_MAX) || (neg == -1 && num > -(long)INT_MIN))
+	if ((neg == 1 && num  >INT_MAX) || (neg == -1 && num > -(long)INT_MIN))
 		print_erro();
 	return (num * neg);
 }

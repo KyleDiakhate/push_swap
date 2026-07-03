@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:37:30 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/23 17:03:52 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/06/26 15:28:07 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ float	disorder(t_stack *a)
 {
 	float		total_pairs;
 	float		mistakes;
-	t_node	*current;
-	t_node  *next_node;
+	t_node		*current;
+	t_node		*next_node;
 
 	total_pairs = 0;
 	mistakes = 0;
