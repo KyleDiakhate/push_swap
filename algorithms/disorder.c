@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kyled <kyled@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:37:30 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/26 15:28:07 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/06 12:26:29 by kyled            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,4 @@ float	disorder(t_stack *a)
 		current = current->next;
 	}
 	return (mistakes / total_pairs);
-}
+}  

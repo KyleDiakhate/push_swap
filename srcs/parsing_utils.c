@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kyled <kyled@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 10:55:57 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/03 15:16:11 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/05 17:01:14 by kyled            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ void print_erro()
 	exit(1);
 }
 
-long	verify_num(const char *nptr, long num)
+long	verify_num(const char *str, long num)
 {
 	int i;
 
 	i = 0;
-	while (nptr[i])
+	while (str[i])
 	{
-		if(nptr[i] < '0' || nptr[i] > '9')
+		if(str[i] < '0' || str[i] > '9')
 		{
 			print_erro();
 		}
-		num = num * 10 + (nptr[i] - '0');
+		num = num * 10 + (str[i] - '0');
 		i++;
 	}
 	return (num);
 }
-long	convert_num(const char *nptr)
+long	convert_num(const char *str)
 {
 	int	i;
 	long	neg;
@@ -43,20 +43,20 @@ long	convert_num(const char *nptr)
 	neg = 1;
 	i = 0;
 	num = 0;
-	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || (nptr[i] == ' '))
+	while ((str[i] >= '\t' && str[i] <= '\r') || (str[i] == ' '))
 	{
 		i++;
 	}
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (nptr[i] == '-')
+		if (str[i] == '-')
 			neg *= -1;
 		i++;
 	}
-	if(nptr[i] == '\0')
+	if(str[i] == '\0')
 		print_erro();
-	num = verify_num(&nptr[i], num);
-	if ((neg == 1 && num  >INT_MAX) || (neg == -1 && num > -(long)INT_MIN))
+	num = verify_num(&str[i], num);
+	if ((neg == 1 && num  > INT_MAX) || (neg == -1 && num > -(long)INT_MIN))
 		print_erro();
 	return (num * neg);
 }

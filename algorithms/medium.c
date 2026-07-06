@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyled <kyled@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/17 13:29:45 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/05 15:05:47 by kyled            ###   ########.fr       */
+/*   Created: 2026/07/06 12:49:17 by kyled             #+#    #+#             */
+/*   Updated: 2026/07/06 13:31:31 by kyled            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	main(int argc, char **argv)
+void	normalize(t_stack *a)
 {
-	t_config	config;
-	t_stack		*a;
-	t_stack		*b;
+	t_node *current;
+	t_node *compare;
+	int i;
+	int j;
+	int cont;
 
-	if (argc == 1)
-		return (0);
-	check_flags(argv, &config);
-	a = parse_argv(argv, config.start);
-	if (a->size == 0 || a->size == 1)
+	i = 0;
+	current = a->head;
+	while (i < a->size)
 	{
-		free(a);
-		return (0);
+		cont = 0;
+		j = 0;
+		compare = a->head;
+		while (j < a->size)
+		{	
+			if (compare->data < current->data)
+				cont++;
+			compare = compare->next;
+			j++;
+		}
+		current->index = cont;
+		current = current->next;
+		i++;
 	}
-	b = malloc(sizeof(t_stack));
-	if (!b)
-		print_erro();
-	b->head = NULL;
-	b->size = 0;
-	algo(a, b);
-	return (0);
 }
