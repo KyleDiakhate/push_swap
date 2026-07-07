@@ -6,7 +6,7 @@
 /*   By: kyled <kyled@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 12:49:17 by kyled             #+#    #+#             */
-/*   Updated: 2026/07/06 13:31:31 by kyled            ###   ########.fr       */
+/*   Updated: 2026/07/06 16:31:48 by kyled            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,27 @@ void	normalize(t_stack *a)
 		current->index = cont;
 		current = current->next;
 		i++;
+	}
+}
+
+void	chunk_sort(t_stack *a, t_stack *b)
+{
+	int chunk_size;
+	int i;
+	int limit;
+	
+	chunk_size = 0;
+	i = 1;
+	while (i * i < a->size)
+		i++;
+	chunk_size = i;
+	limit = chunk_size;
+	i = 0;
+	while (a != NULL)
+	{
+		if (a->head->index < limit)
+			push_b(a, b);
+		else
+			rotate_a(a); 		
 	}
 }
