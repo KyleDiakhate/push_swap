@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:34:01 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/21 17:09:15 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/07 15:57:33 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_node	*lstnew(int n)
 {
-	t_node *node;
+	t_node	*node;
 
-	node = malloc(sizeof(t_node));
-	if(!node)
+	node = malloc (sizeof(t_node));
+	if (!node)
 		return (NULL);
 	node -> data = n;
 	node -> next = node;
@@ -28,33 +28,33 @@ t_node	*lstnew(int n)
 
 void	lstaddfront(t_node **lst, int n)
 {
-	t_node *temp;
-	t_node *last;
-	
+	t_node	*temp;
+	t_node	*last;
+
 	temp = lstnew(n);
 	if (!temp)
-    	return ;
-	if(*lst == NULL)
+		return ;
+	if (*lst == NULL)
 	{
 		*lst = temp;
-		return;
+		return ;
 	}
-	last = (*lst) -> prev;
-	temp -> next = *lst;
-	temp -> prev = last;
-    (*lst) -> prev = temp;
-	last -> next = temp; 
+	last = (*lst)-> prev;
+	temp->next = *lst;
+	temp->prev = last;
+	(*lst)->prev = temp;
+	last->next = temp;
 	*lst = temp;
 }
 
 t_stack	*makelst(int argc, char **argv)
 {
-	t_stack *stack;
+	t_stack	*stack;
 	int		i;
 
 	stack = malloc(sizeof(t_stack));
 	if (!stack)
-    	return (NULL);
+		return (NULL);
 	stack -> head = NULL;
 	stack -> size = 0;
 	i = argc - 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyled <kyled@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 10:56:07 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/05 15:04:48 by kyled            ###   ########.fr       */
+/*   Updated: 2026/07/07 15:59:21 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	check_flags(char **argv, t_config *config)
 {
-	int i;
-	
+	int	i;
+
 	i = 1;
 	config->strategy = 4;
 	config->bench = 0;
 	while (argv[i] && argv[i][0] == '-' && argv[i][1] == '-')
 	{
 		if (ft_strlen(argv[i]) == 7 && ft_strncmp(argv[i], "--bench", 7) == 0)
-			config->bench = 1; 
+			config->bench = 1;
 		else if (ft_strlen(argv[i]) == 8 && ft_strncmp(argv[i], "--simple", 8) == 0)
 			config->strategy = 1;
 		else if (ft_strlen(argv[i]) == 8 && ft_strncmp(argv[i], "--medium", 8) == 0)
@@ -91,4 +91,3 @@ t_stack	*parse_argv(char **argv, int start)
 	}
 	return (a);
 }
-

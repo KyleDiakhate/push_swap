@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 16:28:46 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/03 13:44:53 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/07 15:27:20 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 	i = 0;
 	if (s1 == NULL || s2 == NULL)
-		return (NULL);
+		return (0);
 	if (n == 0)
 		return (0);
 	while ((s1[i] != '\0') && (s1[i] == s2[i]))
