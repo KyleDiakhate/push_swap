@@ -6,7 +6,7 @@
 /*   By: kyled <kyled@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 13:29:45 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/05 15:05:47 by kyled            ###   ########.fr       */
+/*   Updated: 2026/07/07 18:20:56 by kyled            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	main(int argc, char **argv)
 	t_stack		*b;
 
 	if (argc == 1)
-		return (0);
+	return (0);
 	check_flags(argv, &config);
 	a = parse_argv(argv, config.start);
-	if (a->size == 0 || a->size == 1)
+	if (a->size <= 1)
 	{
-		free(a);
+		free_stack(a);
 		return (0);
 	}
 	b = malloc(sizeof(t_stack));
@@ -32,6 +32,10 @@ int	main(int argc, char **argv)
 		print_erro();
 	b->head = NULL;
 	b->size = 0;
-	algo(a, b);
+	normalize(a);
+	chunk_sort(a, b);
+	sort_back(a, b);
+	free_stack(a);
+	free_stack(b);
 	return (0);
 }
