@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 12:49:17 by kyled             #+#    #+#             */
-/*   Updated: 2026/07/07 13:26:55 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/08 16:41:02 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	find_max_pos(t_stack *b, int *max_index)
 	return (pos);
 
 }
-void	sort_back(t_stack *a, t_stack *b)
+void	sort_back(t_stack *a, t_stack *b, t_config *config)
 {
 	int	pos;
 	int	max_index;
@@ -72,14 +72,14 @@ void	sort_back(t_stack *a, t_stack *b)
 		pos = find_max_pos(b, &max_index);
 		if (pos <= b->size / 2)
 			while (b->head->index != max_index)
-				rotate_b(b);
+				rotate_b(b, config);
 		else
 			while (b->head->index != max_index)
-				reverse_rotate_b(b);
-		push_a(a, b);
+				reverse_rotate_b(b, config);
+		push_a(a, b, config);
 	}
 }
-void	chunk_sort(t_stack *a, t_stack *b)
+void	chunk_sort(t_stack *a, t_stack *b, t_config *config)
 {
 	int chunk_size;
 	int i;
@@ -95,9 +95,9 @@ void	chunk_sort(t_stack *a, t_stack *b)
 	while (a->size > 0)
 	{
 		if (a->head->index < limit)
-			push_b(a, b);
+			push_b(a, b, config);
 		else
-			rotate_a(a);
+			rotate_a(a, config);
 		if(b->size >=  limit)
 			limit += chunk_size;
 	}

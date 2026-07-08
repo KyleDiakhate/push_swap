@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyled <kyled@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 18:38:36 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/07 18:19:49 by kyled            ###   ########.fr       */
+/*   Updated: 2026/07/08 16:53:45 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,16 @@ void	do_push(t_stack *src, t_stack *dst)
 	free(node);
 }
 
-void	push_a(t_stack *a, t_stack *b)
+void	push_a(t_stack *a, t_stack *b, t_config *config)
 {
 	do_push(b, a);
-	ft_printf("pa\n");
+	ft_dprintf(1, "pa\n");
+	config->ops[3]++;
 }
 
-void	push_b(t_stack *a, t_stack *b)
+void	push_b(t_stack *a, t_stack *b, t_config *config)
 {
 	do_push(a, b);
-	ft_printf("pb\n");
+	ft_dprintf(1, "pb\n");
+	config->ops[4]++;
 }

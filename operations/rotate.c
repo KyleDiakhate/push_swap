@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 18:36:54 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/24 15:28:14 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/08 16:54:45 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,24 @@ void rotate(t_stack *s)
 		return;
 	s->head = s->head->next;
 }
-void	rotate_a(t_stack *a)
+void	rotate_a(t_stack *a, t_config *config)
 {
 	rotate(a);
-	ft_printf("ra\n");
+	ft_dprintf(1, "ra\n");
+	config->ops[5]++;
 }
 
-void	rotate_b(t_stack *b)
+void	rotate_b(t_stack *b, t_config *config)
 {
 	rotate(b);
-	ft_printf("rb\n");
+	ft_dprintf(1, "rb\n");
+	config->ops[6]++;
 }
 
-void	rotate_rr(t_stack *a, t_stack *b)
+void	rotate_rr(t_stack *a, t_stack *b, t_config *config)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
+	ft_dprintf(1, "rr\n");
+	config->ops[7]++;
 }

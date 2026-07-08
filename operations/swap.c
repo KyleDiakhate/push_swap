@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 18:40:10 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/21 17:28:20 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/08 16:55:16 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,24 @@ void    do_swap(t_stack *s)
     s->head->next->data = t;
 }
 
-void    swap_a(t_stack *a)
+void    swap_a(t_stack *a, t_config *config)
 {
     do_swap(a);
-    ft_printf("sa\n");
+    ft_dprintf(1, "sa\n");
+    config->ops[0]++;
 }
 
-void    swap_b(t_stack *b)
+void    swap_b(t_stack *b, t_config *config)
 {
     do_swap(b);
-    ft_printf("sb\n");
+    ft_dprintf(1, "sb\n");
+    config->ops[1]++;
 }
 
-void    swap_ss(t_stack *a, t_stack *b)
+void    swap_ss(t_stack *a, t_stack *b, t_config *config)
 {
     do_swap(a);
     do_swap(b);
-    ft_printf("ss\n");
+    ft_dprintf(1, "ss\n");
+    config->ops[2]++;
 }
