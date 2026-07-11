@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyled <kyled@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:34:01 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/07 18:20:33 by kyled            ###   ########.fr       */
+/*   Updated: 2026/07/09 16:30:16 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_node	*lstnew(int n)
+t_node	*lstnew(int n, int i)
 {
 	t_node	*node;
 
@@ -22,16 +22,16 @@ t_node	*lstnew(int n)
 	node->data = n;
 	node->next = node;
 	node->prev = node;
-	node->index = 0;
+	node->index = i;
 	return (node);
 }
 
-void	lstaddfront(t_node **lst, int n)
+void	lstaddfront(t_node **lst, int n, int i)
 {
 	t_node	*temp;
 	t_node	*last;
 
-	temp = lstnew(n);
+	temp = lstnew(n, i);
 	if (!temp)
 		return ;
 	if (*lst == NULL)

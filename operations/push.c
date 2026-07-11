@@ -6,18 +6,22 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 18:38:36 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/08 16:53:45 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/11 17:18:26 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	do_push_one(t_stack *src, t_stack *dst, t_node *node)
+static void	do_push_one(t_stack *src, t_stack *dst)
 {
+	t_node	*node;
+	int		idx;
+	
+	node = src->head;
+	idx = node->index;
 	src->head = NULL;
 	src->size--;
-	lstaddfront(&dst->head, node->data);
-	dst->head->index = node->index;
+	lstaddfront(&dst->head, node->data, idx);
 	dst->size++;
 	free(node);
 }
@@ -27,23 +31,25 @@ void	do_push(t_stack *src, t_stack *dst)
 	t_node	*node;
 	t_node	*new_head;
 	t_node	*last;
-
+	int		idx;
+	
 	if (src->size == 0)
 		return ;
 	node = src->head;
 	if (src->size == 1)
 	{
-		do_push_one(src, dst, node);
+		do_push_one(src, dst);
 		return ;
 	}
+	node = src->head;
+	idx = node->index;
 	new_head = node->next;
 	last = node->prev;
 	src->head = new_head;
 	new_head->prev = last;
 	last->next = new_head;
 	src->size--;
-	lstaddfront(&dst->head, node->data);
-	dst->head->index = node->index;
+	lstaddfront(&dst->head, node->data, idx);
 	dst->size++;
 	free(node);
 }

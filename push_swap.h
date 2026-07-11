@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/08 17:08:09 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:31:05 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	reverse_rotate_b(t_stack *b, t_config *config);
 void	reverse_rotate_rrr(t_stack *a, t_stack *b, t_config *config);
 
 /* list */
-t_node	*lstnew(int n);
-void	lstaddfront(t_node **lst, int n);
+t_node	*lstnew(int n, int i);
+void	lstaddfront(t_node **lst, int n, int i);
 void	free_stack(t_stack *s);
 
 /* parsing */

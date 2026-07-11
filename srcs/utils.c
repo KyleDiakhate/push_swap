@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:39:17 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/08 17:06:34 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/11 17:26:35 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	total_ops(t_config *config)
 	i = 0;
 	while (i < 11)
 	{
-		total = total + config->ops[i];
+		total += config->ops[i];
 		i++;
 	}
 	return (total);

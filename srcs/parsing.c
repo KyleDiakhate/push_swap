@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 10:56:07 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/07 15:59:21 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/11 18:41:11 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,15 @@ void	process_args(t_stack *a, char **args)
 
 	i = 0;
 	while (args[i])
+		i++;
+	i--;
+	while (i >= 0)
 	{
 		num = convert_num(args[i]);
 		is_duplicate(a, (int)num);
-		lstaddfront(&a->head, (int)num);
+		lstaddfront(&a->head, (int)num, 0);
 		a->size++;
-		i++;
+		i--;
 	}
 }
 
@@ -81,13 +84,16 @@ t_stack	*parse_argv(char **argv, int start)
 	a->size = 0;
 	i = start;
 	while (argv[i])
+		i++;
+	i--;
+	while (i >= start)
 	{
 		args = ft_split(argv[i], ' ');
 		if (!args)
 			print_erro();
 		process_args(a, args);
 		free_split(args);
-		i++;
+		i--;
 	}
 	return (a);
 }
