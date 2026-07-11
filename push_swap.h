@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/09 16:31:05 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/11 19:44:52 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ int		find_max_pos(t_stack *b, int *max_index);
 
 /* utils */
 void	print_bench(t_config *config);
-
+void	sort_two(t_stack *a, t_config *config);
+void	sort_three(t_stack *a, t_config *config);
 #endif

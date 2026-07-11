@@ -23,7 +23,8 @@ SRCS = srcs/main.c \
        ft_printf/ft_putstr.c \
        ft_printf/ft_putun.c \
        algorithms/disorder.c \
-       algorithms/medium.c
+       algorithms/medium.c \
+       algorithms/sort.c
 
 OBJS = $(SRCS:.c=.o)
 

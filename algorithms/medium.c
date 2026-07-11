@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 12:49:17 by kyled             #+#    #+#             */
-/*   Updated: 2026/07/08 16:41:02 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/11 19:55:13 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,26 +79,41 @@ void	sort_back(t_stack *a, t_stack *b, t_config *config)
 		push_a(a, b, config);
 	}
 }
+static int	sort_small(t_stack *a, t_config *config)
+{
+	if (a->size == 2)
+	{
+		sort_two(a, config);
+		return (1);
+	}
+	if (a->size == 3)
+	{
+		sort_three(a, config);
+		return (1);
+	}
+	return (0);
+}
+
 void	chunk_sort(t_stack *a, t_stack *b, t_config *config)
 {
-	int chunk_size;
-	int i;
-	int limit;
-	
-	chunk_size = 0;
+	int	chunk_size;
+	int	i;
+	int	limit;
+
+	if (sort_small(a, config))
+		return ;
 	i = 1;
 	while (i * i < a->size)
 		i++;
 	chunk_size = i;
 	limit = chunk_size;
-	i = 0;
 	while (a->size > 0)
 	{
 		if (a->head->index < limit)
 			push_b(a, b, config);
 		else
 			rotate_a(a, config);
-		if(b->size >=  limit)
+		if (b->size >= limit)
 			limit += chunk_size;
 	}
 }
