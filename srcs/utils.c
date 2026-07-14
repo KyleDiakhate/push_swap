@@ -6,12 +6,11 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:39:17 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/11 17:26:35 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/14 17:37:44 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
 
 static int	total_ops(t_config *config)
 {
@@ -58,12 +57,31 @@ static void	print_ops(int fd, t_config *config)
 	ft_dprintf(fd, "rrr: %d\n", config->ops[10]);
 }
 
+static void	print_strategy(int fd, t_config *config)
+{
+	if (config->strategy == 4)
+	{
+		ft_dprintf(fd, "[bench] strategy: Adaptive / ");
+		if (config->dis < 0.2)
+			ft_dprintf(fd, "O(n^2)\n");
+		else if (config->dis < 0.5)
+			ft_dprintf(fd, "O(n√n)\n");
+		else
+			ft_dprintf(fd, "O(n log n)\n");
+	}
+	else if (config->strategy == 1)
+		ft_dprintf(fd, "[bench] strategy: Simple / O(n^2)\n");
+	else if (config->strategy == 2)
+		ft_dprintf(fd, "[bench] strategy: Medium / O(n√n)\n");
+	else if (config->strategy == 3)
+		ft_dprintf(fd, "[bench] strategy: Complex / O(n log n)\n");
+}
 
 void	print_bench(t_config *config)
 {
 	ft_dprintf(2, "[bench] disorder: ");
 	print_dis(2, config->dis);
-	ft_dprintf(2, "[bench] strategy: Medium / O(n√n)\n");
+	print_strategy(2, config);
 	ft_dprintf(2, "[bench] total_ops: %d\n", total_ops(config));
 	print_ops(2, config);
 }

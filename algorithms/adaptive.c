@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 16:28:46 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/07 15:27:20 by ltomas-d         ###   ########.fr       */
+/*   Created: 2026/07/13 17:58:12 by ltomas-d          #+#    #+#             */
+/*   Updated: 2026/07/14 17:05:59 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	adaptive(t_stack *a, t_stack *b, t_config *config)
 {
-	size_t	i;
-
-	i = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (0);
-	if (n == 0)
-		return (0);
-	while ((s1[i] != '\0') && (s1[i] == s2[i]))
+	if (config->dis < 0.2)
 	{
-		if (i < n - 1)
-			i++;
-		else
-			return (0);
+		simple(a, b, config);
 	}
-	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+	else if (config->dis < 0.5)
+	{
+		chunk_sort(a, b, config);
+		sort_back(a, b, config);
+	}
+	else if (config->dis >= 0.5)
+	{
+		complex(a, b, config);
+	}
 }

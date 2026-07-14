@@ -6,11 +6,12 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 16:20:40 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/08 16:50:04 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/14 17:09:16 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
 int	ft_putstr(int fd, char *s)
 {
 	int	i;

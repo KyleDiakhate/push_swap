@@ -6,18 +6,19 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/21 17:56:37 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/08 16:54:18 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/14 17:12:33 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void reverse_rotate(t_stack *s)
+void	reverse_rotate(t_stack *s)
 {
-	if(s->size < 2)
-		return;
+	if (s->size < 2)
+		return ;
 	s->head = s->head->prev;
 }
+
 void	reverse_rotate_a(t_stack *a, t_config *config)
 {
 	reverse_rotate(a);

@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 12:49:17 by kyled             #+#    #+#             */
-/*   Updated: 2026/07/11 19:55:13 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/14 17:04:38 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	normalize(t_stack *a)
 {
-	t_node *current;
-	t_node *compare;
-	int i;
-	int j;
-	int cont;
+	t_node	*current;
+	t_node	*compare;
+	int		i;
+	int		j;
+	int		cont;
 
 	i = 0;
 	current = a->head;
@@ -28,7 +28,7 @@ void	normalize(t_stack *a)
 		j = 0;
 		compare = a->head;
 		while (j < a->size)
-		{	
+		{
 			if (compare->data < current->data)
 				cont++;
 			compare = compare->next;
@@ -39,11 +39,12 @@ void	normalize(t_stack *a)
 		i++;
 	}
 }
+
 int	find_max_pos(t_stack *b, int *max_index)
 {
-	int pos;
-	int i;
-	t_node *node_b;
+	int		pos;
+	int		i;
+	t_node	*node_b;
 
 	*max_index = b->head->index;
 	pos = 0;
@@ -60,8 +61,8 @@ int	find_max_pos(t_stack *b, int *max_index)
 		i++;
 	}
 	return (pos);
-
 }
+
 void	sort_back(t_stack *a, t_stack *b, t_config *config)
 {
 	int	pos;
@@ -79,7 +80,8 @@ void	sort_back(t_stack *a, t_stack *b, t_config *config)
 		push_a(a, b, config);
 	}
 }
-static int	sort_small(t_stack *a, t_config *config)
+
+static int	sort_small(t_stack *a, t_stack *b, t_config *config)
 {
 	if (a->size == 2)
 	{
@@ -91,6 +93,11 @@ static int	sort_small(t_stack *a, t_config *config)
 		sort_three(a, config);
 		return (1);
 	}
+	if (a->size <= 5)
+	{
+		sort_five(a, b, config);
+		return (1);
+	}
 	return (0);
 }
 
@@ -100,7 +107,7 @@ void	chunk_sort(t_stack *a, t_stack *b, t_config *config)
 	int	i;
 	int	limit;
 
-	if (sort_small(a, config))
+	if (sort_small(a, b, config))
 		return ;
 	i = 1;
 	while (i * i < a->size)
@@ -117,4 +124,3 @@ void	chunk_sort(t_stack *a, t_stack *b, t_config *config)
 			limit += chunk_size;
 	}
 }
-

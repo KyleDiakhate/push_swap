@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/11 19:44:52 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/14 17:22:23 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int		check_flags(char **argv, t_config *config);
 t_stack	*parse_argv(char **argv, int start);
 void	process_args(t_stack *a, char **args);
 void	free_split(char **args);
+int		cmp(char *s1, char *s2);
 
 /* parsing utils */
 void	print_erro(void);
@@ -92,6 +93,10 @@ void	normalize(t_stack *a);
 void	chunk_sort(t_stack *a, t_stack *b, t_config *config);
 void	sort_back(t_stack *a, t_stack *b, t_config *config);
 int		find_max_pos(t_stack *b, int *max_index);
+int		complex(t_stack *a, t_stack *b, t_config *config);
+t_stack	*simple(t_stack *a, t_stack *b, t_config *config);
+void	adaptive(t_stack *a, t_stack *b, t_config *config);
+void	sort_five(t_stack *a, t_stack *b, t_config *config);
 
 /* utils */
 void	print_bench(t_config *config);

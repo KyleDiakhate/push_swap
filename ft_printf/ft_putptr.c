@@ -6,12 +6,12 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 15:07:06 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/08 16:52:25 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/14 17:09:37 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../push_swap.h"
+
 static	int	ft_putptr_recursive(int fd, unsigned long n)
 {
 	int		cont;

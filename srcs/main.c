@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 13:29:45 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/11 19:54:39 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/14 17:21:31 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,19 @@ static void	run_algo(t_stack *a, t_stack *b, t_config *config)
 {
 	normalize(a);
 	config->dis = disorder(a);
+	if (config->dis == 0)
+		return ;
 	if (config->strategy == 1)
-	{
-		chunk_sort(a, b, config);
-		sort_back(a, b, config);
-	}
+		simple(a, b, config);
 	else if (config->strategy == 2)
 	{
 		chunk_sort(a, b, config);
 		sort_back(a, b, config);
 	}
 	else if (config->strategy == 3)
-	{
-		chunk_sort(a, b, config);
-		sort_back(a, b, config);
-	}
-	else
-	{
-		chunk_sort(a, b, config);
-		sort_back(a, b, config);
-	}
+		complex(a, b, config);
+	else if (config->strategy == 4)
+		adaptive(a, b, config);
 }
 
 int	main(int argc, char **argv)
