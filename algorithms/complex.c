@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 17:02:30 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/14 17:04:48 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/15 15:25:51 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ int	complex(t_stack *a, t_stack *b, t_config *config)
 	int	n;
 	int	order;
 
-	if (a->size <= 3)
+	if (a->size <= 5)
 	{
 		if (a->size == 2)
 			sort_two(a, config);
-		else
+		else if (a->size == 3)
 			sort_three(a, config);
+		else 
+			sort_five(a, b, config);
 		return (0);
 	}
 	order = 0;

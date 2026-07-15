@@ -6,16 +6,20 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 10:55:57 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/14 17:37:31 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/15 17:22:52 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	print_erro(void)
+void	print_error(t_stack *a, char **args)
 {
+	if (args)
+		free_split(args);
+	if (a)
+		free_stack(a);
 	ft_dprintf(2, "Error\n");
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 int	cmp(char *s1, char *s2)
@@ -36,9 +40,7 @@ long	verify_num(const char *str, long num)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-		{
-			print_erro();
-		}
+			return (LONG_MAX);
 		num = num * 10 + (str[i] - '0');
 		i++;
 	}
@@ -65,27 +67,30 @@ long	convert_num(const char *str)
 		i++;
 	}
 	if (str[i] == '\0')
-		print_erro();
+		return (LONG_MAX);
 	num = verify_num(&str[i], num);
+	if (num == LONG_MAX)
+		return (LONG_MAX);
 	if ((neg == 1 && num > INT_MAX) || (neg == -1 && num > -(long)INT_MIN))
-		print_erro();
+		return (LONG_MAX);
 	return (num * neg);
 }
 
-void	is_duplicate(t_stack *s, int value)
+int	is_duplicate(t_stack *s, int value)
 {
 	t_node	*current;
 
 	current = s->head;
-	if (current == NULL)
-		return ;
+	if (!current)
+		return (0);
 	if (current->data == value)
-		print_erro();
-	current = s->head->next;
+		return (1);
+	current = current->next;
 	while (current != s->head)
 	{
 		if (current->data == value)
-			print_erro();
+			return (1);
 		current = current->next;
 	}
+	return (0);
 }

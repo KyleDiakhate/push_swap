@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 13:29:45 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/14 17:21:31 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/15 17:26:57 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ static void	init_config(t_config *config)
 	}
 }
 
-static t_stack	*init_stack_b(void)
+static t_stack	*init_stack_b(t_stack *a)
 {
 	t_stack	*b;
 
 	b = malloc(sizeof(t_stack));
 	if (!b)
-		print_erro();
+		print_error(a, NULL);
 	b->head = NULL;
 	b->size = 0;
 	return (b);
@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 		free_stack(a);
 		return (0);
 	}
-	b = init_stack_b();
+	b = init_stack_b(a);
 	run_algo(a, b, &config);
 	if (config.bench)
 		print_bench(&config);

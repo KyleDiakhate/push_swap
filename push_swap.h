@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/14 17:22:23 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/15 17:13:14 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ void	free_split(char **args);
 int		cmp(char *s1, char *s2);
 
 /* parsing utils */
-void	print_erro(void);
+void	print_error(t_stack *a, char **args);
 long	convert_num(const char *str);
 long	verify_num(const char *str, long num);
-void	is_duplicate(t_stack *s, int value);
+int		is_duplicate(t_stack *s, int value);
 
 /* algorithms */
 float	disorder(t_stack *a);

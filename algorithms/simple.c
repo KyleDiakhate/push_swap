@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:36:19 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/14 17:01:47 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/15 15:43:43 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ t_stack	*simple(t_stack *a, t_stack *b, t_config *config)
 		sort_three(a, config);
 		return (b);
 	}
-	push_all_to_b(a, b, config);
-	push_all_to_a(a, b, config);
+	while (disorder(a) != 0)
+	{
+		push_all_to_b(a, b, config);
+		push_all_to_a(a, b, config);
+	}
 	return (b);
 }

@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 10:56:07 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/14 17:36:13 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/15 17:52:21 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	set_strategy(char *arg, t_config *config, int *set)
 {
 	if (*set)
-		print_erro();
+		print_error(NULL, NULL);
 	if (cmp(arg, "--simple") == 0)
 		config->strategy = 1;
 	else if (cmp(arg, "--medium") == 0)
@@ -46,7 +46,7 @@ int	check_flags(char **argv, t_config *config)
 		else if (set_strategy(argv[i], config, &strat_set))
 			(void)0;
 		else
-			print_erro();
+			print_error(NULL, NULL);
 		i++;
 	}
 	config->start = i;
@@ -78,7 +78,10 @@ void	process_args(t_stack *a, char **args)
 	while (i >= 0)
 	{
 		num = convert_num(args[i]);
-		is_duplicate(a, (int)num);
+		if (num == LONG_MAX)
+			print_error(a, args);
+		if (is_duplicate(a, (int)num))
+			print_error(a, args);
 		lstaddfront(&a->head, (int)num, 0);
 		a->size++;
 		i--;
@@ -93,7 +96,7 @@ t_stack	*parse_argv(char **argv, int start)
 
 	a = malloc(sizeof(t_stack));
 	if (!a)
-		print_erro();
+		print_error(NULL, NULL);
 	a->head = NULL;
 	a->size = 0;
 	i = start;
@@ -103,10 +106,10 @@ t_stack	*parse_argv(char **argv, int start)
 	while (i >= start)
 	{
 		if (argv[i][0] == '\0')
-			print_erro();
+			print_error(a, NULL);
 		args = ft_split(argv[i], ' ');
 		if (!args)
-			print_erro();
+			print_error(a, NULL);
 		process_args(a, args);
 		free_split(args);
 		i--;
