@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/15 17:13:14 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/16 12:14:57 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_config
 {
 	int		strategy;
 	int		bench;
+	int		flag;
 	int		start;
 	int		ops[11];
 	float	dis;
