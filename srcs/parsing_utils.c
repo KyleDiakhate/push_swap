@@ -6,75 +6,91 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 10:55:57 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/25 15:44:48 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/27 09:48:20 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void print_erro()
+void	print_error(t_stack *a, char **args)
 {
-	write(2, "Error\n", 6);
-	exit(1);
+	if (args)
+		free_split(args);
+	if (a)
+		free_stack(a);
+	ft_dprintf(2, "Error\n");
+	exit(EXIT_FAILURE);
 }
 
-long	verify_num(const char *nptr, long num)
+int	cmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (nptr[i])
+	while (s1[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}
+
+long	verify_num(const char *str, long num)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		if(nptr[i] < '0' || nptr[i] > '9')
-		{
-			print_erro();
-		}
-		num = num * 10 + (nptr[i] - '0');
+		if (str[i] < '0' || str[i] > '9')
+			return (LONG_MAX);
+		num = num * 10 + (str[i] - '0');
 		i++;
 	}
 	return (num);
 }
-long	convert_num(const char *nptr)
+
+long	convert_num(const char *str)
 {
-	int	i;
+	int		i;
 	long	neg;
 	long	num;
 
-	neg = 1;
+	neg = 1;c
 	i = 0;
 	num = 0;
-	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || (nptr[i] == ' '))
+	while ((str[i] >= '\t' && str[i] <= '\r') || (str[i] == ' '))
 	{
 		i++;
 	}
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (nptr[i] == '-')
+		if (str[i] == '-')
 			neg *= -1;
 		i++;
 	}
-	if(nptr[i] == '\0')
-		print_erro();
-	num = verify_num(&nptr[i], num);
+	if (str[i] == '\0')
+		return (LONG_MAX);
+	num = verify_num(&str[i], num);
+	if (num == LONG_MAX)
+		return (LONG_MAX);
 	if ((neg == 1 && num > INT_MAX) || (neg == -1 && num > -(long)INT_MIN))
-		print_erro();
+		return (LONG_MAX);
 	return (num * neg);
 }
 
-void	is_duplicate(t_stack *s, int value)
+int	is_duplicate(t_stack *s, int value)
 {
-	t_node *current;
+	t_node	*current;
 
 	current = s->head;
-	if(current == NULL)
-		return;
-	if(current->data == value)
-		print_erro();
-	current = s->head->next;
+	if (!current)
+		return (0);
+	if (current->data == value)
+		return (1);
+	current = current->next;
 	while (current != s->head)
 	{
-		if(current->data == value)
-			print_erro();
+		if (current->data == value)
+			return (1);
 		current = current->next;
 	}
+	return (0);
 }

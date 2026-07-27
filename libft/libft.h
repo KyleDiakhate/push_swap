@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 17:12:45 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/25 10:23:01 by ltomas-d         ###   ########.fr       */
+/*   Created: 2026/04/16 17:00:00 by ltomas-d          #+#    #+#             */
+/*   Updated: 2026/07/14 17:10:39 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void	ft_bzero(void *s, size_t n)
-{
-	unsigned char	*ptr;
-	size_t			i;
+# include <stdlib.h>
+# include <unistd.h>
 
-	i = 0;
-	ptr = (unsigned char *) s;
-	if (s == NULL)
-		return;
-	while (i < n)
-	{
-		ptr[i] = 0;
-		i++;
-	}
-}
+void	ft_bzero(void *s, size_t n);
+char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+#endif

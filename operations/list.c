@@ -6,63 +6,66 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:34:01 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/21 17:09:15 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:30:16 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_node	*lstnew(int n)
+t_node	*lstnew(int n, int i)
 {
-	t_node *node;
+	t_node	*node;
 
 	node = malloc(sizeof(t_node));
-	if(!node)
+	if (!node)
 		return (NULL);
-	node -> data = n;
-	node -> next = node;
-	node -> prev = node;
-	node -> index = 0;
+	node->data = n;
+	node->next = node;
+	node->prev = node;
+	node->index = i;
 	return (node);
 }
 
-void	lstaddfront(t_node **lst, int n)
+void	lstaddfront(t_node **lst, int n, int i)
 {
-	t_node *temp;
-	t_node *last;
-	
-	temp = lstnew(n);
+	t_node	*temp;
+	t_node	*last;
+
+	temp = lstnew(n, i);
 	if (!temp)
-    	return ;
-	if(*lst == NULL)
+		return ;
+	if (*lst == NULL)
 	{
 		*lst = temp;
-		return;
+		return ;
 	}
-	last = (*lst) -> prev;
-	temp -> next = *lst;
-	temp -> prev = last;
-    (*lst) -> prev = temp;
-	last -> next = temp; 
+	last = (*lst)->prev;
+	temp->next = *lst;
+	temp->prev = last;
+	(*lst)->prev = temp;
+	last->next = temp;
 	*lst = temp;
 }
 
-t_stack	*makelst(int argc, char **argv)
+void	free_stack(t_stack *s)
 {
-	t_stack *stack;
+	t_node	*current;
+	t_node	*next;
 	int		i;
 
-	stack = malloc(sizeof(t_stack));
-	if (!stack)
-    	return (NULL);
-	stack -> head = NULL;
-	stack -> size = 0;
-	i = argc - 1;
-	while (i >= 1)
+	if (!s)
+		return ;
+	if (s->head)
 	{
-		lstaddfront(&stack->head, atoi(argv[i]));
-		stack -> size++;
-		i--;
+		current = s->head;
+		i = 0;
+		while (i < s->size)
+		{
+			next = current->next;
+			free(current);
+			current = next;
+			i++;
+		}
 	}
-	return (stack);
+	free(s);
 }

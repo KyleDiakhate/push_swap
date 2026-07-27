@@ -1,48 +1,53 @@
 NAME = push_swap
-CC = cc  
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRCS_DIR = srcs
-OPERATIONS_DIR = operations
-PRINTF_DIR = ft_printf
-ALGO_DIR = algorithms
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-
-SRCS_FILES = $(SRCS_DIR)/main.c \
-		     $(SRCS_DIR)/list.c \
-			 $(SRCS_DIR)/utils.c		
-
-OPERATIONS_FILES = $(OPERATIONS_DIR)/push.c \
-				   $(OPERATIONS_DIR)/rotate.c \
-				   $(OPERATIONS_DIR)/swap.c 
-
-PRINTF_FILES =  $(PRINTF_DIR)/ft_printf.c \
-				$(PRINTF_DIR)/ft_putchar.c \
-				$(PRINTF_DIR)/ft_puthex.c \
-				$(PRINTF_DIR)/ft_putnbr.c \
-				$(PRINTF_DIR)/ft_putptr.c \
-				$(PRINTF_DIR)/ft_putstr.c \
-				$(PRINTF_DIR)/ft_putun.c 
-ALGO_FILE = $(ALGO_DIR)/disorder.c \
-			$(ALGO_DIR)/simple.c 
-
-SRCS = $(SRCS_FILES) $(OPERATIONS_FILES) $(PRINTF_FILES) $(ALGO_FILE)
+SRCS = srcs/main.c \
+       srcs/utils.c \
+       srcs/parsing.c \
+       srcs/parsing_utils.c \
+       operations/push.c \
+       operations/rotate.c \
+       operations/swap.c \
+       operations/reverse_rotate.c \
+       operations/list.c \
+       ft_printf/ft_printf.c \
+       ft_printf/ft_putchar.c \
+       ft_printf/ft_puthex.c \
+       ft_printf/ft_putnbr.c \
+       ft_printf/ft_putptr.c \
+       ft_printf/ft_putstr.c \
+       ft_printf/ft_putun.c \
+       algorithms/disorder.c \
+       algorithms/medium.c \
+       algorithms/sort.c \
+       algorithms/complex.c \
+       algorithms/simple.c \
+       algorithms/adaptive.c
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
+$(LIBFT):
+	make -C $(LIBFT_DIR)
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 clean:
 	$(RM) $(OBJS)
+	make -C $(LIBFT_DIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
+	make -C $(LIBFT_DIR) fclean
 
 re: fclean all

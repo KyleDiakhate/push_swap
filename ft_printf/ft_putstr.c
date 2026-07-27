@@ -6,24 +6,25 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 16:20:40 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/18 18:31:06 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/14 17:09:16 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-int	ft_putstr(char *s)
+
+int	ft_putstr(int fd, char *s)
 {
 	int	i;
 
 	i = 0;
 	if (s == NULL)
 	{
-		write (1, "(null)", 6);
+		write (fd, "(null)", 6);
 		return (6);
 	}
 	while (s[i] != '\0')
 	{
-		write (1, &s[i], 1);
+		write (fd, &s[i], 1);
 		i++;
 	}
 	return (i);

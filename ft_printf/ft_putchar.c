@@ -6,13 +6,14 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 16:09:33 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/06/18 18:30:53 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/14 17:08:39 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-int	ft_putchar(char c)
+
+int	ft_putchar(int fd, char c)
 {
-	write (1, &c, 1);
+	write (fd, &c, 1);
 	return (1);
 }
