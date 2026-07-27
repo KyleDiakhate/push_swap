@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:36:19 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/15 15:43:43 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/18 15:11:19 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,12 @@ t_stack	*simple(t_stack *a, t_stack *b, t_config *config)
 		sort_two(a, config);
 		return (b);
 	}
-	if (a->size == 3)
+	if (a->size <= 5)
 	{
-		sort_three(a, config);
+		if (a->size == 3)
+			sort_three(a, config);
+		else
+			sort_five(a, b, config);
 		return (b);
 	}
 	while (disorder(a) != 0)

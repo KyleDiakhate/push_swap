@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:26:20 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/16 12:14:57 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/18 15:16:47 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ typedef struct s_stack
 	t_node	*head;
 	int		size;
 }	t_stack;
-
-/* ft_printf */
-
 int		ft_dprintf(int fd, const char *str, ...);
 int		ft_putchar(int fd, char c);
 int		ft_puthex(int fd, unsigned int n, char type);
@@ -52,8 +49,6 @@ int		ft_putnbr(int fd, int n);
 int		ft_putptr(int fd, unsigned long n);
 int		ft_putstr(int fd, char *s);
 int		ft_putun(int fd, unsigned int n);
-
-/* operations */
 void	do_swap(t_stack *s);
 void	swap_a(t_stack *a, t_config *config);
 void	swap_b(t_stack *b, t_config *config);
@@ -69,26 +64,18 @@ void	reverse_rotate(t_stack *s);
 void	reverse_rotate_a(t_stack *a, t_config *config);
 void	reverse_rotate_b(t_stack *b, t_config *config);
 void	reverse_rotate_rrr(t_stack *a, t_stack *b, t_config *config);
-
-/* list */
 t_node	*lstnew(int n, int i);
 void	lstaddfront(t_node **lst, int n, int i);
 void	free_stack(t_stack *s);
-
-/* parsing */
 int		check_flags(char **argv, t_config *config);
 t_stack	*parse_argv(char **argv, int start);
 void	process_args(t_stack *a, char **args);
 void	free_split(char **args);
 int		cmp(char *s1, char *s2);
-
-/* parsing utils */
 void	print_error(t_stack *a, char **args);
 long	convert_num(const char *str);
 long	verify_num(const char *str, long num);
 int		is_duplicate(t_stack *s, int value);
-
-/* algorithms */
 float	disorder(t_stack *a);
 void	normalize(t_stack *a);
 void	chunk_sort(t_stack *a, t_stack *b, t_config *config);
@@ -98,8 +85,6 @@ int		complex(t_stack *a, t_stack *b, t_config *config);
 t_stack	*simple(t_stack *a, t_stack *b, t_config *config);
 void	adaptive(t_stack *a, t_stack *b, t_config *config);
 void	sort_five(t_stack *a, t_stack *b, t_config *config);
-
-/* utils */
 void	print_bench(t_config *config);
 void	sort_two(t_stack *a, t_config *config);
 void	sort_three(t_stack *a, t_config *config);

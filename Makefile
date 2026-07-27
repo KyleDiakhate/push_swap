@@ -7,7 +7,6 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS = srcs/main.c \
-       srcs/list.c \
        srcs/utils.c \
        srcs/parsing.c \
        srcs/parsing_utils.c \
@@ -15,6 +14,7 @@ SRCS = srcs/main.c \
        operations/rotate.c \
        operations/swap.c \
        operations/reverse_rotate.c \
+       operations/list.c \
        ft_printf/ft_printf.c \
        ft_printf/ft_putchar.c \
        ft_printf/ft_puthex.c \

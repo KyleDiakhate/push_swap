@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 19:43:54 by ltomas-d          #+#    #+#             */
-/*   Updated: 2026/07/14 17:08:11 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/18 13:01:57 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,16 @@ static void	push_min_to_b(t_stack *a, t_stack *b, t_config *config, int target)
 {
 	int		pos;
 	int		i;
-	t_node	*cur;
+	t_node	*current;
 
 	pos = 0;
-	cur = a->head;
+	current = a->head;
 	i = 0;
 	while (i < a->size)
 	{
-		if (cur->index == target)
+		if (current->index == target)
 			pos = i;
-		cur = cur->next;
+		current = current->next;
 		i++;
 	}
 	if (pos <= a->size / 2)

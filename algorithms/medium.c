@@ -6,7 +6,7 @@
 /*   By: ltomas-d <ltomas-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 12:49:17 by kyled             #+#    #+#             */
-/*   Updated: 2026/07/15 14:54:49 by ltomas-d         ###   ########.fr       */
+/*   Updated: 2026/07/18 10:35:45 by ltomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	sort_back(t_stack *a, t_stack *b, t_config *config)
 	}
 }
 
-static int	sort_small(t_stack *a, t_config *config)
+static int	sort_small(t_stack *a, t_stack *b, t_config *config)
 {
 	if (a->size == 2)
 	{
@@ -93,6 +93,11 @@ static int	sort_small(t_stack *a, t_config *config)
 		sort_three(a, config);
 		return (1);
 	}
+	else if (a->size == 5)
+	{
+		sort_five(a, b, config);
+		return (1);
+	}
 	return (0);
 }
 
@@ -102,7 +107,7 @@ void	chunk_sort(t_stack *a, t_stack *b, t_config *config)
 	int	i;
 	int	limit;
 
-	if (sort_small(a, config))
+	if (sort_small(a, b, config))
 		return ;
 	i = 1;
 	while (i * i < a->size)
